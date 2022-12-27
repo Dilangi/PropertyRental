@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="158.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PropertyItemController">
+   <children>
+      <ImageView fitHeight="86.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" />
+      <HBox prefHeight="18.0" prefWidth="280.0">
+         <children>
+            <VBox prefHeight="86.0" prefWidth="430.0">
+               <children>
+                  <HBox prefHeight="17.0" prefWidth="278.0">
+                     <children>
+                        <Label text="Property Id" />
+                        <TextArea fx:id="tfPropertyId" prefHeight="28.0" prefWidth="67.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="33.0" prefWidth="278.0">
+                     <children>
+                        <Label text="Rent" />
+                        <TextArea fx:id="tfRent" prefHeight="38.0" prefWidth="67.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="37.0" prefWidth="278.0">
+                     <children>
+                        <Label text="Postal Code" />
+                        <TextArea fx:id="tfPostalCode" prefHeight="25.0" prefWidth="67.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="41.0" prefWidth="278.0">
+                     <children>
+                        <Label text="Beds" />
+                        <TextArea fx:id="tfBeds" prefHeight="38.0" prefWidth="67.0" />
+                        <Label text="Bath" />
+                        <TextArea fx:id="tfBath" prefHeight="38.0" prefWidth="67.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="btnView" mnemonicParsing="false" onAction="#viewPropertyListener" text="View" />
+            <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#updatePropertyListener" text="Update" />
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#deletePropertyListener" text="Delete" />
+         </children>
+      </HBox>
+   </children>
+</HBox>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PropertyDetailController">
+   <children>
+      <HBox layoutX="8.0" layoutY="23.0" prefHeight="282.0" prefWidth="184.0">
+         <children>
+            <VBox prefHeight="305.0" prefWidth="194.0">
+               <children>
+                  <Label prefHeight="31.0" prefWidth="187.0" text="Listed" />
+                  <Label prefHeight="27.0" prefWidth="187.0" text="Property type">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="25.0" prefWidth="189.0" text="No. of bedrooms">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="26.0" prefWidth="191.0" text="No. of bath">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="27.0" prefWidth="191.0" text="Rent (PCM)">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="22.0" prefWidth="190.0" text="Furnished status">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="26.0" prefWidth="191.0" text="Floor size">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="30.0" prefWidth="189.0" text="Garden access">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox layoutX="198.0" layoutY="23.0" prefHeight="314.0" prefWidth="146.0">
+         <children>
+            <VBox prefHeight="314.0" prefWidth="148.0">
+               <children>
+                  <TextField fx:id="tfListedDate" prefHeight="28.0" prefWidth="87.0" />
+                  <TextField fx:id="tfType">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="tfBedCount">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="tfBathCount">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="tfRent">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="tfFurnished">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="tfFloorSize">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="tfFloorSize">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox layoutX="355.0" layoutY="6.0" prefHeight="216.0" prefWidth="237.0">
+         <children>
+            <VBox prefHeight="216.0" prefWidth="225.0">
+               <children>
+                  <ImageView fx:id="ivProperty" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <HBox prefHeight="66.0" prefWidth="220.0">
+                     <children>
+                        <Label text="Property Id">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tfPropertyId" prefHeight="26.0" prefWidth="110.0">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Button fx:id="btnBack" layoutX="100.0" layoutY="348.0" mnemonicParsing="false" onAction="#backListener" prefHeight="25.0" prefWidth="89.0" text="Back" />
+      <Button fx:id="btnRent" layoutX="393.0" layoutY="348.0" mnemonicParsing="false" onAction="#rentListener" prefHeight="26.0" prefWidth="90.0" text="Rent" />
+   </children>
+</AnchorPane>
