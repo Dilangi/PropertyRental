@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -9,47 +10,53 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import list.SceneSwitcher;
 import model.Property;
 import model.PropertyDetail;
 
 public class PropertyDetailController  implements Initializable{
 
     @FXML
-    private Button btnBack;
+    private Button btnRent1;
 
     @FXML
-    private Button btnRent;
+    private Label lblBathCount;
 
     @FXML
-    private TextField tfBathCount;
+    private Label lblBedCount;
 
     @FXML
-    private TextField tfBedCount;
+    private Label lblFloorSize;
 
     @FXML
-    private TextField tfFloorSize;
+    private Label lblFurnished;
 
     @FXML
-    private TextField tfFurnished;
+    private Label lblGarden;
 
     @FXML
-    private TextField tfListedDate;
+    private Label lblLatLong;
 
     @FXML
-    private TextField tfRent;
+    private Label lblListedDate;
 
     @FXML
-    private TextField tfType;
+    private Label lblLocation;
 
     @FXML
-    void backListener(ActionEvent event) {
-
-    }
+    private Label lblRent;
 
     @FXML
-    void rentListener(ActionEvent event) {
+    private Label lblType;
 
+    @FXML
+    private Label lblPostal;
+
+    @FXML
+    void rentListener(ActionEvent event) throws IOException {
+    	SceneSwitcher sceneSwitcher = new SceneSwitcher();
+		sceneSwitcher.switchView(event, "/view/Agreement.fxml");
     }
 
 	@Override
@@ -64,19 +71,24 @@ public class PropertyDetailController  implements Initializable{
 		String rent = Double.toString(pe.getRent()); 
 		String size = Double.toString(pe.getSize());
 		String postcode = pe.getPostcode();
-		String latLong = pe.getLatLong();
+		String lat = pe.getLat();
+		String lon = pe.getLon();
 		String furnishing =pe.getFurnishing(); 
 		String type = pe.getType(); 
 		String garden = pe.getGarden();
 		
-		tfBathCount.setText(bathrooms);
-		tfBedCount.setText(bedrooms);
-		tfFloorSize.setText(size);
-		tfFurnished.setText(furnishing);
-		tfListedDate.setText(date);
-		tfRent.setText(rent);
-		tfType.setText(type);
+		lblBathCount.setText(bathrooms);
+		lblBedCount.setText(bedrooms);
+		lblFloorSize.setText(size);
+		lblFurnished.setText(furnishing);
+		lblListedDate.setText(date);
+		lblRent.setText(rent);
+		lblType.setText(type);
+		lblGarden.setText(garden);
+		lblLatLong.setText(lat+","+lon);
+		lblPostal.setText(postcode);
 		}
 
 }
+
 

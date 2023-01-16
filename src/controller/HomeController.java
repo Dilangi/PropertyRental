@@ -5,11 +5,8 @@ import java.text.ParseException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
+import list.SceneSwitcher;
 
 public class HomeController {
 
@@ -30,14 +27,14 @@ public class HomeController {
 
     @FXML
     void addCustomerListener(ActionEvent event) throws IOException {
-    	closeParent(btnAddCustomer);
-    	showNewWindow("/view/AddCustomer.fxml");
+    	SceneSwitcher sceneSwitcher = new SceneSwitcher();
+		sceneSwitcher.switchView(event, "/view/AddCustomer.fxml");
     }
 
     @FXML
     void addPoIListener(ActionEvent event) throws IOException {
-    	closeParent(btnAddPoI);
-    	showNewWindow("/view/PointOfInterest.fxml");
+    	SceneSwitcher sceneSwitcher = new SceneSwitcher();
+		sceneSwitcher.switchView(event, "/view/PointOfInterest.fxml");
     }
 
     @FXML
@@ -52,26 +49,7 @@ public class HomeController {
 
     @FXML
     void viewPropertiesListener(ActionEvent event) throws IOException, ClassNotFoundException, ParseException {
-    	closeParent(btnAddCustomer);
-    	showNewWindow("/view/Properties.fxml");
-    }
-    
-    void closeParent(Button btn) {
-    	Stage primaryStage = (Stage) btn.getScene().getWindow();
-    	primaryStage.close();
-    }
-    
-    void showNewWindow(String path) throws IOException{
-    	Stage stage = new Stage();
-    	Parent p = FXMLLoader.load(getClass().getResource(path));
-		Scene s = new Scene(p);
-    	stage.setTitle("Property Rentals");
-		stage.setScene(s);
-		stage.show();
-    }
-    
-
-
-    
-    
+    	SceneSwitcher sceneSwitcher = new SceneSwitcher();
+		sceneSwitcher.switchView(event, "/view/Properties.fxml");
+    } 
 }

@@ -23,4 +23,7 @@ public class CustomerList implements Serializable {
 		customerList.add(ce);
 	}
 
+	public int getSize() {
+		return customerList.size();
+	}
 }

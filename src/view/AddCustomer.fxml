@@ -6,6 +6,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddCustomerController">
@@ -19,8 +20,11 @@
       <Label layoutX="52.0" layoutY="200.0" prefHeight="18.0" prefWidth="41.0" text="Gender" />
       <Label layoutX="52.0" layoutY="240.0" prefHeight="18.0" prefWidth="130.0" text="Credit history checked" />
       <Label layoutX="52.0" layoutY="276.0" prefHeight="18.0" prefWidth="98.0" text="Special Notes" />
-      <RadioButton fx:id="rbMale" layoutX="192.0" layoutY="200.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="69.0" text="Male" />
-      <RadioButton fx:id="rbFemale" layoutX="265.0" layoutY="200.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="69.0" text="Female" />
+      <RadioButton fx:id="rbMale" layoutX="192.0" layoutY="200.0" mnemonicParsing="false" onAction="#getGender" prefHeight="18.0" prefWidth="69.0" text="Male">
+         <toggleGroup>
+            <ToggleGroup fx:id="genderGroup" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="rbFemale" layoutX="265.0" layoutY="200.0" mnemonicParsing="false" onAction="#getGender" prefHeight="18.0" prefWidth="69.0" text="Female" toggleGroup="$genderGroup" />
       <TextArea fx:id="taNotes" layoutX="170.0" layoutY="276.0" prefHeight="50.0" prefWidth="340.0" />
       <TextField fx:id="tfName" layoutX="187.0" layoutY="96.0" />
       <ChoiceBox fx:id="choiceBoxCreditHistory" layoutX="187.0" layoutY="237.0" prefWidth="150.0" />

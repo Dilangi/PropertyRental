@@ -12,7 +12,8 @@ public class PropertyDetail  implements Serializable{
 	private double rent;
 	private double size;
 	private String postcode;
-	private String latLong;
+	private String lat;
+	private String lon;
 	private String furnishing;
 	private String type;
 	private String garden;
@@ -65,12 +66,21 @@ public class PropertyDetail  implements Serializable{
 		this.postcode = postcode;
 	}
 
-	public String getLatLong() {
-		return latLong;
+	
+	public String getLat() {
+		return lat;
 	}
 
-	public void setLatLong(String latLong) {
-		this.latLong = latLong;
+	public void setLat(String lat) {
+		this.lat = lat;
+	}
+
+	public String getLon() {
+		return lon;
+	}
+
+	public void setLon(String lon) {
+		this.lon = lon;
 	}
 
 	public String getFurnishing() {
@@ -98,14 +108,15 @@ public class PropertyDetail  implements Serializable{
 	}
 
 	public PropertyDetail(Date listed, int bedrooms, int bathrooms, double rent, double size, String postcode,
-			String latLong, String furnishing, String type, String garden) {
+			String lat, String lon, String furnishing, String type, String garden) {
 		this.listed = listed;
 		this.bedrooms = bedrooms;
 		this.bathrooms = bathrooms;
 		this.rent = rent;
 		this.size = size;
 		this.postcode = postcode;
-		this.latLong = latLong;
+		this.lat = lat;
+		this.lon = lon;
 		this.furnishing = furnishing;
 		this.type = type;
 		this.garden = garden;

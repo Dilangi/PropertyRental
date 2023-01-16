@@ -7,13 +7,10 @@ import java.io.ObjectOutputStream;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import model.Customer;
+import list.ObjectHelper;
+import list.SceneSwitcher;
 import model.PointOfInterest;
 
 public class PointOfInterestController {
@@ -41,7 +38,7 @@ public class PointOfInterestController {
     	
 
     	PointOfInterest ce = new PointOfInterest(name,postalCode,latLong);
-File file = new File("poilist.file");	
+    	File file = new File(ObjectHelper.getPoiListFileName());	
     	
     	try {
 	        FileOutputStream fileOut = new FileOutputStream(file, true);
@@ -55,26 +52,12 @@ File file = new File("poilist.file");
 
     @FXML
     void backListener(ActionEvent event) {
-    	closeParent(btnBack);
     	try {
-			showNewWindow("/view/Home.fxml");
+        	SceneSwitcher sceneSwitcher = new SceneSwitcher();
+    		sceneSwitcher.switchView(event, "/view/Home.fxml");
 		} catch (IOException e) {
 			System.out.println("backListener"+e);
 		}
-    }
-    
-    void closeParent(Button btn) {
-    	Stage primaryStage = (Stage) btn.getScene().getWindow();
-    	primaryStage.close();
-    }
-    
-    void showNewWindow(String path) throws IOException{
-    	Stage stage = new Stage();
-    	Parent p = FXMLLoader.load(getClass().getResource(path));
-		Scene s = new Scene(p);
-    	stage.setTitle("Property Rentals");
-		stage.setScene(s);
-		stage.show();
     }
 
 }

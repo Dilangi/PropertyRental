@@ -8,10 +8,21 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class ObjectHelper {
-	private static String customerListFileName = "customerlist.dat";
-	private static String propertyListFileName = "propertylist.dat";
-	private static String poiListFileName = "poilist.dat";
+	private static final String CUSTOMER_LIST_FILE_NAME = "customerlist.dat";
+	private static final String PROPERTY_LIST_FILE_NAME  = "propertylist.dat";
+	private static final String POI_LIST_FILE_NAME = "poilist.dat";
 	
+	public static String getCustomerListFileName() {
+		return CUSTOMER_LIST_FILE_NAME;
+	}
+	
+	public static String getPropertyListFileName() {
+		return PROPERTY_LIST_FILE_NAME;
+	}
+
+	public static String getPoiListFileName() {
+		return POI_LIST_FILE_NAME;
+	}
 	
 	// Serialize the object to a file
 	public static void doSerialize(Object obj, String outputFile) throws IOException {
@@ -43,27 +54,26 @@ public class ObjectHelper {
     
     // write data into customerlist.dat
 	public static void writeToFile(CustomerList list) throws IOException {
-	      doSerialize(list, customerListFileName);
-	      System.out.println("The serialized objects were written to "+ customerListFileName);	
+	      doSerialize(list, CUSTOMER_LIST_FILE_NAME);
+	      System.out.println("The serialized objects were written to "+ CUSTOMER_LIST_FILE_NAME);	
 	}
 	
 	// write data into propertylist.dat
 	public static void writeToFile(PropertyList list) throws IOException {
-	      doSerialize(list, propertyListFileName);
-	      System.out.println("The serialized objects were written to "+ propertyListFileName);	
+	      doSerialize(list, PROPERTY_LIST_FILE_NAME);
+	      System.out.println("The serialized objects were written to "+ PROPERTY_LIST_FILE_NAME);	
 	}
 	
 	// write data into poilist.dat
 	public static void writeToFile(POIList list) throws IOException {
-	      doSerialize(list, poiListFileName);
-	      System.out.println("The serialized objects were written to "+ poiListFileName);	
+	      doSerialize(list, POI_LIST_FILE_NAME);
+	      System.out.println("The serialized objects were written to "+ POI_LIST_FILE_NAME);	
 	}
     
 	// read data from customerlist.dat
-	public static CustomerList readCustomerList() throws IOException, ClassNotFoundException {
-		CustomerList list = new CustomerList();
+	public static CustomerList readCustomerList(CustomerList list) throws IOException, ClassNotFoundException {
 		Object obj;
-		obj = doDeserialize(customerListFileName);
+		obj = doDeserialize(CUSTOMER_LIST_FILE_NAME);
 		if (obj instanceof CustomerList)
 			list = (CustomerList) obj;
 		System.out.println("list size: "+list.getCustomers().size());
@@ -83,7 +93,7 @@ public class ObjectHelper {
 		PropertyList list = new PropertyList();
 		Object obj;
 		try {
-			obj = doDeserialize(propertyListFileName);
+			obj = doDeserialize(PROPERTY_LIST_FILE_NAME);
 			if (obj instanceof PropertyList)
 				list = (PropertyList) obj;
 			System.out.println("list size: "+list.getProperties().size());
@@ -105,7 +115,7 @@ public class ObjectHelper {
 	public static POIList readPOIList() throws IOException, ClassNotFoundException {
 		POIList list = new POIList();
 		Object obj;
-		obj = doDeserialize(poiListFileName);
+		obj = doDeserialize(POI_LIST_FILE_NAME);
 		if (obj instanceof POIList)
 			list = (POIList) obj;
 		System.out.println("list size: "+list.getPOIs().size());

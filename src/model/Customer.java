@@ -64,7 +64,7 @@ public class Customer implements Serializable{
 	public void setNote(String note) {
 		this.note = note;
 	}
-	public boolean isCreditHistory() {
+	public boolean getCreditHistory() {
 		return creditHistory;
 	}
 	public void setCreditHistory(boolean creditHistory) {

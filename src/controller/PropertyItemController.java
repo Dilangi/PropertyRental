@@ -1,31 +1,22 @@
 package controller;
 
 import java.io.IOException;
-import java.net.URL;
 import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import list.SceneSwitcher;
 import model.Property;
 import model.PropertyDetail;
 
-public class PropertyItemController implements Initializable{
+public class PropertyItemController{
 
-	@FXML
+    @FXML
     private Button btnDelete;
 
     @FXML
@@ -38,13 +29,31 @@ public class PropertyItemController implements Initializable{
     private Button btnView;
 
     @FXML
+    private Label lblBath;
+
+    @FXML
     private Label lblBeds;
+
+    @FXML
+    private Label lblFurnish;
+
+    @FXML
+    private Label lblGarden;
+
+    @FXML
+    private Label lblLatLong;
 
     @FXML
     private Label lblListed;
 
     @FXML
+    private Label lblLocation;
+
+    @FXML
     private Label lblRent;
+
+    @FXML
+    private Label lblSize;
 
     @FXML
     private Label lblType;
@@ -56,51 +65,38 @@ public class PropertyItemController implements Initializable{
 
     @FXML
     void editPropertyListener(ActionEvent event)  throws IOException {
-    	closeParent(btnView);
-    	showNewWindow("/view/PropertyDetail.fxml");
+    	SceneSwitcher sceneSwitcher = new SceneSwitcher();
+		sceneSwitcher.switchView(event, "/view/PropertyDetail.fxml");
     }
 
     @FXML
     void rentListener(ActionEvent event)  throws IOException {
-    	closeParent(btnView);
-    	showNewWindow("/view/Home.fxml");
+    	SceneSwitcher sceneSwitcher = new SceneSwitcher();
+		sceneSwitcher.switchView(event, "/view/Home.fxml");
     }
 
     @FXML
     void viewPropertyListener(ActionEvent event) throws IOException, ParseException {
     	passData();
-  
-		Stage stage = (Stage) btnView.getScene().getWindow();
-		stage.close();
-		Parent p = FXMLLoader.load(getClass().getResource("/view/PropertyDetail.fxml"));
-    	Scene s = new Scene(p);
-    	stage.setTitle("Property Rentals");
-		stage.setScene(s);
-		stage.show();
-		
+    	SceneSwitcher sceneSwitcher = new SceneSwitcher();
+		sceneSwitcher.newView(event, "/view/PropertyDetail.fxml");
     }
 
 	private void passData() throws ParseException {
 		Date listed = new SimpleDateFormat("dd/MM/yyyy").parse(lblListed.getText());
 		int bedrooms = Integer.parseInt(lblBeds.getText());
-		int bathrooms = Integer.parseInt("2");
+		int bathrooms = Integer.parseInt(lblBath.getText());
 		double rent = Double.parseDouble(lblRent.getText()); 
-		double size = Double.parseDouble("2.00");
-		String postcode = "";
-		String latLong = "";
-		String furnishing ="22"; 
+		double size = Double.parseDouble(lblSize.getText());
+		String postcode = lblLocation.getText();
+		String lat = lblLatLong.getText().split(",")[0];
+		String lon = lblLatLong.getText().split(",")[1];
+		String furnishing =lblFurnish.getText(); 
 		String type = lblType.getText(); 
-		String garden = "2";
-		
-		PropertyDetail pe = new PropertyDetail(listed, bedrooms, bathrooms, rent, size, postcode,latLong, furnishing, type, garden);
+		String garden = lblGarden.getText();
+		PropertyDetail pe = new PropertyDetail(listed, bedrooms, bathrooms, rent, size, postcode,lat, lon, furnishing, type, garden);
 		Property prop = Property.getInstance();
     	prop.setPropertyDetail(pe);
-	}
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public void setData(PropertyDetail propertyDetail) {
@@ -110,21 +106,14 @@ public class PropertyItemController implements Initializable{
 		lblRent.setText(Double.toString(propertyDetail.getRent()));
 		lblType.setText(propertyDetail.getType());
 		lblBeds.setText(Integer.toString(propertyDetail.getBedrooms()));
+		lblFurnish.setText(propertyDetail.getFurnishing());
+		lblGarden.setText(propertyDetail.getGarden());
+		lblLatLong.setText(propertyDetail.getLat()+","+propertyDetail.getLon());
+		lblLocation.setText(propertyDetail.getPostcode());
+		lblSize.setText(Double.toString(propertyDetail.getSize()));
+		lblType.setText(propertyDetail.getType());
+		lblBath.setText(Integer.toString(propertyDetail.getBathrooms()));
 		}
-    
-    void closeParent(Button btn) {
-    	Stage primaryStage = (Stage) btn.getScene().getWindow();
-    	primaryStage.close();
-    }
-    
-    void showNewWindow(String path) throws IOException{
-    	Stage stage = new Stage();
-    	Parent p = FXMLLoader.load(getClass().getResource(path));
-		Scene s = new Scene(p);
-    	stage.setTitle("Property Rentals");
-		stage.setScene(s);
-		stage.show();
-    }
 
 }
 

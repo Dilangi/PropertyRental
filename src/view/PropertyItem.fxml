@@ -3,112 +3,235 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox prefHeight="78.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PropertyItemController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="161.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PropertyItemController">
    <children>
-      <VBox prefHeight="127.0" prefWidth="61.0">
+      <VBox prefHeight="281.0" prefWidth="600.0">
          <children>
-            <Label alignment="TOP_LEFT" text="Listed">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </VBox.margin>
-            </Label>
-            <Label text="Rent">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </VBox.margin>
-            </Label>
-            <Label text="Type">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </VBox.margin>
-            </Label>
-            <Label text="Location">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </VBox.margin>
-            </Label>
-         </children>
-         <HBox.margin>
-            <Insets bottom="5.0" left="10.0" top="5.0" />
-         </HBox.margin>
-      </VBox>
-      <VBox prefHeight="118.0" prefWidth="411.0">
-         <children>
-            <Label fx:id="lblListed" prefHeight="20.0" prefWidth="240.0" text="date">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" top="5.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblRent" prefHeight="20.0" prefWidth="235.0" text="£">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" top="5.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblType" prefHeight="20.0" prefWidth="234.0" text="Type">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" top="5.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="lblBeds" prefHeight="20.0" prefWidth="270.0" text="postal">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" top="5.0" />
-               </VBox.margin>
-            </Label>
-         </children>
-         <HBox.margin>
-            <Insets bottom="5.0" top="5.0" />
-         </HBox.margin>
-      </VBox>
-      <VBox prefHeight="200.0" prefWidth="100.0">
-         <children>
-            <Button fx:id="btnView" mnemonicParsing="false" onAction="#viewPropertyListener" prefHeight="26.0" prefWidth="94.0" text="View">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#editPropertyListener" prefHeight="26.0" prefWidth="90.0" text="Edit">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#deletePropertyListener" prefHeight="26.0" prefWidth="91.0" text="Delete">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="btnRent" mnemonicParsing="false" onAction="#rentListener" prefHeight="26.0" prefWidth="91.0" text="Rent">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" />
-               </VBox.margin>
-            </Button>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox prefHeight="154.0" prefWidth="138.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" text="Listed">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="20.0" prefWidth="102.0" text="Rent (£ PCM) ">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Type">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Location">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Furnishing">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="149.0" prefWidth="230.0">
+                     <children>
+                        <Label fx:id="lblListed" prefHeight="20.0" prefWidth="240.0" text="date">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" top="5.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblRent" prefHeight="20.0" prefWidth="235.0" text="£">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" top="5.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblType" prefHeight="20.0" prefWidth="234.0" text="Type">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="lblLocation" prefHeight="20.0" prefWidth="270.0" text="postal">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="lblFurnish" prefHeight="20.0" prefWidth="270.0" text="furnishing">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="165.0" prefWidth="103.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" text="Bedrooms">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Bathrooms">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Garden">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Lat,Long">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Floor size">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="118.0" prefWidth="188.0">
+                     <children>
+                        <Label fx:id="lblBeds" prefHeight="20.0" prefWidth="240.0" text="bed">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" top="5.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblBath" prefHeight="20.0" prefWidth="235.0" text="bath">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" top="5.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblGarden" prefHeight="20.0" prefWidth="234.0" text="garden">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="lblLatLong" prefHeight="20.0" prefWidth="270.0" text="latLong">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="lblSize" prefHeight="20.0" prefWidth="270.0" text="size">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button fx:id="btnRent" mnemonicParsing="false" onAction="#rentListener" prefHeight="26.0" prefWidth="91.0" style="-fx-background-color: #03961c;" text="Rent">
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btnView" mnemonicParsing="false" onAction="#viewPropertyListener" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #039696;" text="View">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#editPropertyListener" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #f5cb42;" text="Edit">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#deletePropertyListener" prefHeight="26.0" prefWidth="91.0" style="-fx-background-color: #f20505;" text="Delete">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Separator prefHeight="9.0" prefWidth="658.0" />
          </children>
       </VBox>
    </children>
