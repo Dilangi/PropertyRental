@@ -14,6 +14,7 @@ public class Customer implements Serializable{
 	private String gender;
 	private String note;
 	private boolean creditHistory;
+	private int houseHolder;
 	
 	public Customer(int customerId, String name, String email, String contact, String gender,
 			boolean creditHistory, String note) {
@@ -24,8 +25,17 @@ public class Customer implements Serializable{
 		this.gender = gender;
 		this.note = note;
 		this.creditHistory = creditHistory;
+		this.houseHolder =1;
 	}
 	
+	public int getHouseHolder() {
+		return houseHolder;
+	}
+
+	public void setHouseHolder(int houseHolder) {
+		this.houseHolder = houseHolder;
+	}
+
 	public Customer() {}
 
 	public int getCustomerId() {

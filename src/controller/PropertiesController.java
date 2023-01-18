@@ -51,8 +51,7 @@ public class PropertiesController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		PropertyList pl = new PropertyList();
-		pl =ObjectHelper.readPropertyList();
+		PropertyList pl =ObjectHelper.readPropertyList();
 		
 		List<PropertyDetail> pdl = new ArrayList<PropertyDetail>();
 		pdl = pl.getProperties();

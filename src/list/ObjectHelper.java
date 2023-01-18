@@ -78,13 +78,13 @@ public class ObjectHelper {
 			list = (CustomerList) obj;
 		System.out.println("list size: "+list.getCustomers().size());
 		
-		// to do remove this 
+		// todo remove this 
 		if (list.getCustomers().size() > 0) {
 			System.out.println("Customers in the list are: ");
 			for (int i = 0; i < list.getCustomers().size(); i++) {
 				System.out.println("Customer Name: " + list.getCustomers().get(i));
 			}
-		}//to do end
+		}//todo end
 		return list;
 	}
 	

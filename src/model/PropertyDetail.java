@@ -17,6 +17,7 @@ public class PropertyDetail  implements Serializable{
 	private String furnishing;
 	private String type;
 	private String garden;
+	private boolean isRented;
 	
 	public Date getListed() {
 		return listed;
@@ -120,10 +121,19 @@ public class PropertyDetail  implements Serializable{
 		this.furnishing = furnishing;
 		this.type = type;
 		this.garden = garden;
+		this.isRented = false;
 	}
 
 	public PropertyDetail() {
 		super();
+	}
+
+	public boolean isRented() {
+		return isRented;
+	}
+
+	public void setRented(boolean isRented) {
+		this.isRented = isRented;
 	}
 
 	

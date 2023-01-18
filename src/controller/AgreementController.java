@@ -1,34 +1,41 @@
 package controller;
 
-	import java.io.File;
+import java.io.File;
 import java.io.IOException;
-	import java.net.URL;
-	import java.text.Format;
+import java.net.URL;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-	import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-	import javafx.event.ActionEvent;
-	import javafx.fxml.FXML;
-	import javafx.fxml.Initializable;
-	import javafx.scene.control.Button;
-	import javafx.scene.control.DatePicker;
-	import javafx.scene.control.Label;
-	import javafx.scene.control.TextField;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import list.CustomerList;
 import list.ObjectHelper;
 import list.SceneSwitcher;
-	import model.Agreement;
+import model.Agreement;
 import model.Customer;
 import model.Property;
-	import model.PropertyDetail;
+import model.PropertyDetail;
 
 	public class AgreementController  implements Initializable{
 		
 		Agreement agreement = new Agreement();
+
+		Property property = Property.getInstance();
+		PropertyDetail pe = property.getPropertyDetail();
+		
+		Double deposit;
+    	Double agentFee;
 
 	    @FXML
 	    private Button btnAgreement;
@@ -41,6 +48,9 @@ import model.Property;
 
 	    @FXML
 	    private DatePicker dpEndDate;
+
+	    @FXML
+	    private DatePicker dpLetDate;
 
 	    @FXML
 	    private Label lblBathCount;
@@ -99,43 +109,66 @@ import model.Property;
 
 	    @FXML
 	    void gerCustomerDetail(ActionEvent event) throws NumberFormatException, ClassNotFoundException, IOException {
-	    	getCustomer(Integer.parseInt(tfCustomerId.getText()));
+	    	String id = tfCustomerId.getText();
+	    	getCustomer(Integer.parseInt(id), event);
 	    }
 
 	    @FXML
 	    void rentListener(ActionEvent event) throws IOException {
-	    	Double deposit = Double.parseDouble(txtDeposit.getText());
-	    	Double agentFee = Double.parseDouble(tfAgentFee.getText());
-	    	agreement.setAgentFee(agentFee);
-	    	agreement.setDeposit(deposit);
-
-	    	SceneSwitcher sceneSwitcher = new SceneSwitcher();
-			sceneSwitcher.switchView(event, "/view/Invoice.fxml");
+	    	
+	    	//set deposit, agent fee values into Agreement object
+	    	 deposit = Double.parseDouble(txtDeposit.getText());
+	    	 agentFee = Double.parseDouble(tfAgentFee.getText());
+	    	 agreement.setAgentFee(agentFee);
+	    	 agreement.setDeposit(deposit);
+	    	
+	    	//set house holders count values into Agreement object
+	    	Customer cust = agreement.getCustomer();
+	    	cust.setHouseHolder(Integer.parseInt(tfRentCount.getText())); //validate fields
+	    	agreement.setCustomer(cust);
+	    	
+	    	Node node = (Node) event.getSource();
+	    	Stage stage = (Stage) node.getScene().getWindow();
+	    	stage.close();
+	    	
+	    	try {
+	    		FXMLLoader loader  = new FXMLLoader();
+	    		loader.setLocation(getClass().getResource("/view/Invoice.fxml"));
+	    		//loader.load();
+	    		
+	    		InvoiceController controller = new InvoiceController();
+	    	    controller.setAgreement(agreement);
+	    	    loader.setController(controller);
+	    	    Parent root = loader.load();
+	    	    Scene scene = new Scene(root);
+	    	    stage.setScene(scene);
+	    	    stage.show();
+	    	  } catch (IOException e) {
+	    	    System.err.println(String.format("Error: %s", e.getMessage()));
+	    	  }
 	    }
 
 		@FXML
 	    void getDate(ActionEvent event) throws ParseException {
 	    	LocalDate date = dpEndDate.getValue();
-	    	String eDate = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-	    	Date endDate = new SimpleDateFormat("dd/MM/yyyy").parse(eDate);
-	    	agreement.setEndDate(endDate);
+	    	agreement.setEndDate(date);
 	    }
 
+		@FXML
+		void getLetDate(ActionEvent event) {
+			LocalDate date = dpLetDate.getValue();
+	    	agreement.setLetDate(date);
+		}
+		 
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			setPropertyDetails();
 		}
 
 		private void setPropertyDetails() {
-			Property property = Property.getInstance();
-			PropertyDetail pe = property.getPropertyDetail();
-
-			Format formatter = new SimpleDateFormat("dd/MM/yyyy");
-			String date = formatter.format(pe.getListed());
-			
 			String bedrooms = Integer.toString(pe.getBedrooms());
 			String bathrooms = Integer.toString(pe.getBathrooms());
-			String rent = Double.toString(pe.getRent()); 
+			Double rent = pe.getRent(); 
 			String size = Double.toString(pe.getSize());
 			String postcode = pe.getPostcode();
 			String furnishing =pe.getFurnishing(); 
@@ -146,19 +179,27 @@ import model.Property;
 			lblBedCount.setText(bedrooms);
 			lblFloorSize.setText(size);
 			lblFurnished.setText(furnishing);
-			lblRent.setText(rent);
+			lblRent.setText(Double.toString(rent));
 			lblType.setText(type);
 			lblGarden.setText(garden);
 			lblPostal.setText(postcode);
+			
+			//calculate agent fee
+	    	agentFee = rent*0.20;
+	    	tfAgentFee.setText(Double.toString(agentFee));
+	    	
+	    	//calculate initial deposit
+	    	deposit = rent*6;
+	    	txtDeposit.setText(Double.toString(deposit));
 
 			agreement.setPropertyDetail(pe);
 		}
 		
-		private void getCustomer(int id) throws ClassNotFoundException, IOException {
+		private void getCustomer(int id, ActionEvent event) throws ClassNotFoundException, IOException {
 			CustomerList cl = new CustomerList();
 	    	File fileCustomerlist = new File(ObjectHelper.getCustomerListFileName());
 			if(fileCustomerlist.exists()){
-				ObjectHelper.readCustomerList(cl);
+				cl =ObjectHelper.readCustomerList(cl);
 				for(Customer cust : cl.getCustomers()) {
 					if(cust.getCustomerId()==id) {
 						String custName = cust.getName();
@@ -169,13 +210,18 @@ import model.Property;
 						lblCredit.setText(Boolean.toString(creditHistory));
 						agreement.setCustomer(cust);
 					}else {
-						//open customer registeration seperate view and once close get customer details
+						SceneSwitcher sceneSwitcher = new SceneSwitcher();
+			    		sceneSwitcher.switchView(event, "/view/AddCustomer.fxml");
+						//todo when close set customer details here
 					}
 				}
 			}else { 
-				//open customer registeration seperate view and once close get customer details
-				}
+				SceneSwitcher sceneSwitcher = new SceneSwitcher();
+	    		sceneSwitcher.switchView(event, "/view/AddCustomer.fxml");
+				//todo when close set customer details here
+			}
 		}
 
-}
+	}
+
 

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import javafx.event.ActionEvent;
@@ -100,8 +102,18 @@ public class PropertyItemController{
 	}
 
 	public void setData(PropertyDetail propertyDetail) {
-		Format formatter = new SimpleDateFormat("dd/MM/yyyy");
+		Format formatter = new SimpleDateFormat("yyyy/MM/dd");
 		String date = formatter.format(propertyDetail.getListed());
+		
+		DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		String today = LocalDate.now().format(formatter1);
+		
+		//if property already rented then hide Rent button
+		if(propertyDetail.isRented())
+			{btnRent.setVisible(false);}
+		else
+			{btnRent.setVisible(true);}
+		
 		lblListed.setText(date);
 		lblRent.setText(Double.toString(propertyDetail.getRent()));
 		lblType.setText(propertyDetail.getType());
@@ -113,7 +125,7 @@ public class PropertyItemController{
 		lblSize.setText(Double.toString(propertyDetail.getSize()));
 		lblType.setText(propertyDetail.getType());
 		lblBath.setText(Integer.toString(propertyDetail.getBathrooms()));
-		}
+	}
 
 }
 

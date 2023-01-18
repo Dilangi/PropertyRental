@@ -1,20 +1,22 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Agreement {
 	private Customer customer;
 	private PropertyDetail propertyDetail;
 	private double deposit;
 	private double agentFee;
-	private Date endDate;
+	private LocalDate endDate;
+	private LocalDate letDate;
 	
-	public Agreement(Customer customer, PropertyDetail propertyDetail, double deposit, double agentFee, Date endDate) {
+	public Agreement(Customer customer, PropertyDetail propertyDetail, double deposit, double agentFee, LocalDate letDate, LocalDate endDate) {
 		this.customer = customer;
 		this.propertyDetail = propertyDetail;
 		this.deposit = deposit;
 		this.agentFee = agentFee;
 		this.endDate = endDate;
+		this.letDate = letDate;
 	}
 	
 	public Agreement() {}
@@ -51,13 +53,20 @@ public class Agreement {
 		this.agentFee = agentFee;
 	}
 
-	public Date getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
-	
+
+	public LocalDate getLetDate() {
+		return letDate;
+	}
+
+	public void setLetDate(LocalDate letDate) {
+		this.letDate = letDate;
+	}
 	
 }
