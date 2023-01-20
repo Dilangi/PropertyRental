@@ -12,20 +12,18 @@ public class Customer implements Serializable{
 	private String email;
 	private String contact;
 	private String gender;
-	private String note;
 	private boolean creditHistory;
 	private int houseHolder;
 	
 	public Customer(int customerId, String name, String email, String contact, String gender,
-			boolean creditHistory, String note) {
+			boolean creditHistory, int houseHolder) {
 		this.customerId = customerId;
 		this.name = name;
 		this.email = email;
 		this.contact = contact;
 		this.gender = gender;
-		this.note = note;
 		this.creditHistory = creditHistory;
-		this.houseHolder =1;
+		this.houseHolder =houseHolder;
 	}
 	
 	public int getHouseHolder() {
@@ -68,12 +66,6 @@ public class Customer implements Serializable{
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getNote() {
-		return note;
-	}
-	public void setNote(String note) {
-		this.note = note;
-	}
 	public boolean getCreditHistory() {
 		return creditHistory;
 	}
@@ -82,9 +74,11 @@ public class Customer implements Serializable{
 	}
 	
 	public String toString(){
-		String str = name + " "+ contact + " "+ email+" " +note + " "+ gender+" " +creditHistory ;
+		String str = name + " "+ contact + " "+ email+" " + gender+" " +creditHistory ;
 		return str;
 		
 	} 
+	
+	
 	
 }

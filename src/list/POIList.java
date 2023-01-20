@@ -23,4 +23,8 @@ public class POIList implements Serializable {
 		poiList.add(poi);
 	}
 
+	public int getSize() {
+		return poiList.size();
+	}
+
 }

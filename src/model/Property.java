@@ -18,4 +18,8 @@ public class Property {
 	public PropertyDetail getPropertyDetail() {
 		return this.propertyDetail;
 	}
+	
+	public void setNull() {
+		this.propertyDetail=null;
+	}
 }

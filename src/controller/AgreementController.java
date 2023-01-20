@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -19,6 +20,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import list.AgreementList;
 import list.CustomerList;
 import list.ObjectHelper;
 import list.SceneSwitcher;
@@ -36,9 +38,15 @@ import model.PropertyDetail;
 		
 		Double deposit;
     	Double agentFee;
+    	
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        
 
 	    @FXML
 	    private Button btnAgreement;
+
+	    @FXML
+	    private Button btnAddCustomer;
 
 	    @FXML
 	    private Button btnBack;
@@ -92,11 +100,11 @@ import model.PropertyDetail;
 	    private TextField tfCustomerId;
 
 	    @FXML
-	    private TextField tfRentCount;
-
-	    @FXML
 	    private TextField txtDeposit;
 
+	    @FXML
+	    private Label lblHouseHolders;
+	    
 	    @FXML
 	    void backListener(ActionEvent event) {
 	    	try {
@@ -114,7 +122,13 @@ import model.PropertyDetail;
 	    }
 
 	    @FXML
-	    void rentListener(ActionEvent event) throws IOException {
+	    void getCustomerView(ActionEvent event) throws IOException {
+	    	SceneSwitcher sceneSwitcher = new SceneSwitcher();
+			sceneSwitcher.newView(event, "/view/AddCustomer.fxml");
+	    }
+
+	    @FXML
+	    void rentListener(ActionEvent event) throws IOException, ClassNotFoundException {
 	    	
 	    	//set deposit, agent fee values into Agreement object
 	    	 deposit = Double.parseDouble(txtDeposit.getText());
@@ -122,11 +136,17 @@ import model.PropertyDetail;
 	    	 agreement.setAgentFee(agentFee);
 	    	 agreement.setDeposit(deposit);
 	    	
-	    	//set house holders count values into Agreement object
-	    	Customer cust = agreement.getCustomer();
-	    	cust.setHouseHolder(Integer.parseInt(tfRentCount.getText())); //validate fields
-	    	agreement.setCustomer(cust);
-	    	
+	    	AgreementList al = new AgreementList();
+	 		File fileAgreementList = new File(ObjectHelper.getAgreementListFileName());
+	 		int id;
+	 		if(fileAgreementList.exists()){
+	 			al= ObjectHelper.readAgreementList();
+	 			id = al.getSize()+1;
+	 		}else {id = 1;}
+	 		agreement.setAgreementId(id);
+	 		al.addAgreement(agreement);
+	 		ObjectHelper.writeToFile(al);
+	    	 
 	    	Node node = (Node) event.getSource();
 	    	Stage stage = (Stage) node.getScene().getWindow();
 	    	stage.close();
@@ -137,7 +157,7 @@ import model.PropertyDetail;
 	    		//loader.load();
 	    		
 	    		InvoiceController controller = new InvoiceController();
-	    	    controller.setAgreement(agreement);
+	    	    controller.setAgreement(agreement, true);
 	    	    loader.setController(controller);
 	    	    Parent root = loader.load();
 	    	    Scene scene = new Scene(root);
@@ -146,18 +166,22 @@ import model.PropertyDetail;
 	    	  } catch (IOException e) {
 	    	    System.err.println(String.format("Error: %s", e.getMessage()));
 	    	  }
+	    	
+	    	
 	    }
 
 		@FXML
 	    void getDate(ActionEvent event) throws ParseException {
 	    	LocalDate date = dpEndDate.getValue();
-	    	agreement.setEndDate(date);
+	    	String formattedDate = date.format(formatter);
+	    	agreement.setEndDate(LocalDate.parse(formattedDate, formatter));
 	    }
 
 		@FXML
 		void getLetDate(ActionEvent event) {
 			LocalDate date = dpLetDate.getValue();
-	    	agreement.setLetDate(date);
+			String formattedDate = date.format(formatter);
+	    	agreement.setLetDate(LocalDate.parse(formattedDate, formatter));
 		}
 		 
 		@Override
@@ -208,6 +232,7 @@ import model.PropertyDetail;
 						lblCustName.setText(custName);
 						lblContact.setText(custContact);
 						lblCredit.setText(Boolean.toString(creditHistory));
+						lblHouseHolders.setText(Integer.toString(cust.getHouseHolder()));
 						agreement.setCustomer(cust);
 					}else {
 						SceneSwitcher sceneSwitcher = new SceneSwitcher();

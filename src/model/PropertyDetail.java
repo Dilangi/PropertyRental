@@ -1,12 +1,13 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class PropertyDetail  implements Serializable{
 
 	private static final long serialVersionUID = 2000L;
-	private Date listed;
+	private int pId;
+	private LocalDate listed;
 	private int bedrooms;
 	private int bathrooms;
 	private double rent;
@@ -19,11 +20,21 @@ public class PropertyDetail  implements Serializable{
 	private String garden;
 	private boolean isRented;
 	
-	public Date getListed() {
+	
+	
+	public int getpId() {
+		return pId;
+	}
+
+	public void setpId(int pId) {
+		this.pId = pId;
+	}
+
+	public LocalDate getListed() {
 		return listed;
 	}
 
-	public void setListed(Date listed) {
+	public void setListed(LocalDate listed) {
 		this.listed = listed;
 	}
 
@@ -108,7 +119,7 @@ public class PropertyDetail  implements Serializable{
 		this.garden = garden;
 	}
 
-	public PropertyDetail(Date listed, int bedrooms, int bathrooms, double rent, double size, String postcode,
+	public PropertyDetail(int pId, LocalDate listed, int bedrooms, int bathrooms, double rent, double size, String postcode,
 			String lat, String lon, String furnishing, String type, String garden) {
 		this.listed = listed;
 		this.bedrooms = bedrooms;
@@ -122,6 +133,7 @@ public class PropertyDetail  implements Serializable{
 		this.type = type;
 		this.garden = garden;
 		this.isRented = false;
+		this.pId = pId;
 	}
 
 	public PropertyDetail() {

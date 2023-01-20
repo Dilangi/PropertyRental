@@ -22,5 +22,8 @@ public class PropertyList implements Serializable {
 	public void addProperty(PropertyDetail pe) {
 		propertyList.add(pe);
 	}
-
+	
+	public int getSize() {
+		return propertyList.size();
+	}
 }

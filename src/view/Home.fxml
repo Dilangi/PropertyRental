@@ -7,11 +7,13 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
    <children>
       <Button fx:id="btnViewProperties" layoutX="88.0" layoutY="199.0" mnemonicParsing="false" onAction="#viewPropertiesListener" text="View Properties" />
-      <Button fx:id="btnUpdateProperty" layoutX="85.0" layoutY="251.0" mnemonicParsing="false" onAction="#updatePropertyListener" text="Update Property" />
       <Button fx:id="btnAddPoI" layoutX="377.0" layoutY="251.0" mnemonicParsing="false" onAction="#addPoIListener" text="Add Point of Interest" />
       <Button fx:id="btnAddCustomer" layoutX="383.0" layoutY="199.0" mnemonicParsing="false" onAction="#addCustomerListener" text="Register Customer" />
       <Label layoutX="274.0" layoutY="79.0" text="WELCOME" />
       <Label layoutX="274.0" layoutY="127.0" text="Property Rentals" />
       <Button fx:id="btnAddProperty" layoutX="88.0" layoutY="300.0" mnemonicParsing="false" onAction="#addPropertyListener" text="Add Property" />
+      <Button fx:id="btnCloseTenancy" layoutX="91.0" layoutY="251.0" mnemonicParsing="false" onAction="#closeTenancyListener" text="Close Tenancy" />
+      <Button fx:id="btnUpdatePOI" layoutX="376.0" layoutY="300.0" mnemonicParsing="false" onAction="#updatePoIListener" text="Update Point of Interest" />
+      <Button fx:id="btnExport" layoutX="230.0" layoutY="339.0" mnemonicParsing="false" onAction="#exportListener" text="Export files" />
    </children>
 </AnchorPane>

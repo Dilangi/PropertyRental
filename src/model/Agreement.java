@@ -1,14 +1,21 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Agreement {
+public class Agreement  implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9856L;
 	private Customer customer;
 	private PropertyDetail propertyDetail;
 	private double deposit;
 	private double agentFee;
 	private LocalDate endDate;
 	private LocalDate letDate;
+	private double deduction;
+	private int agreementId;
 	
 	public Agreement(Customer customer, PropertyDetail propertyDetail, double deposit, double agentFee, LocalDate letDate, LocalDate endDate) {
 		this.customer = customer;
@@ -67,6 +74,22 @@ public class Agreement {
 
 	public void setLetDate(LocalDate letDate) {
 		this.letDate = letDate;
+	}
+
+	public double getDeduction() {
+		return deduction;
+	}
+
+	public void setDeduction(double deduction) {
+		this.deduction = deduction;
+	}
+
+	public int getAgreementId() {
+		return agreementId;
+	}
+
+	public void setAgreementId(int agreementId) {
+		this.agreementId = agreementId;
 	}
 	
 }

@@ -4,18 +4,21 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PointOfInterestController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="btnBack" layoutX="93.0" layoutY="300.0" mnemonicParsing="false" onAction="#backListener" text="Back" />
       <Button fx:id="btnAddPoI" layoutX="417.0" layoutY="307.0" mnemonicParsing="false" onAction="#addPoIListener" text="Add PoI" />
-      <Label layoutX="244.0" layoutY="62.0" text="New Point of Interest" />
+      <Label fx:id="lblTitle" layoutX="333.0" layoutY="52.0" text="New Point of Interest" />
       <Label layoutX="120.0" layoutY="114.0" text="Place" />
       <Label layoutX="120.0" layoutY="155.0" text="Postal Code" />
       <Label layoutX="120.0" layoutY="200.0" text="Lat. Long." />
       <TextField fx:id="tfPlace" layoutX="258.0" layoutY="102.0" />
       <TextField fx:id="tfPostalCode" layoutX="258.0" layoutY="151.0" />
       <TextField fx:id="tfLatLong" layoutX="258.0" layoutY="205.0" />
+      <HBox layoutX="10.0" layoutY="10.0" prefHeight="26.0" prefWidth="175.0" />
+      <TextField fx:id="tfSearch" layoutX="58.0" layoutY="48.0" promptText="postal code" />
+      <Button fx:id="btnSearch" layoutX="213.0" layoutY="47.0" mnemonicParsing="false" onAction="#getPOI" prefHeight="26.0" prefWidth="60.0" text="search" />
    </children>
 </AnchorPane>

@@ -12,7 +12,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import list.CustomerList;
@@ -44,9 +43,6 @@ import model.Customer;
 	    private RadioButton rbMale;
 
 	    @FXML
-	    private TextArea taNotes;
-
-	    @FXML
 	    private TextField tfContact;
 
 	    @FXML
@@ -54,6 +50,9 @@ import model.Customer;
 
 	    @FXML
 	    private TextField tfName;
+
+	    @FXML
+	    private TextField tftfRentCount; 
 
 	    @FXML
 	    void getGender(ActionEvent event) {
@@ -78,26 +77,23 @@ import model.Customer;
 	    	String name = tfName.getText();
 	    	String email = tfEmail.getText();
 	    	String contact = tfContact.getText();
-	    	String notes = taNotes.getText();
+	    	int count = Integer.parseInt(tftfRentCount.getText()); 
 	    	int id;
 	    	CustomerList cl = new CustomerList();
 	    	File fileCustomerlist = new File(ObjectHelper.getCustomerListFileName());
-//			if(!fileCustomerlist.exists()){
-//				File file = new File("customerlist.dat");
-//			}
-//			else 
 			if(fileCustomerlist.exists()){
-				ObjectHelper.readCustomerList(cl);
+				cl=ObjectHelper.readCustomerList(cl);
 				id = cl.getSize()+1;
 			}else { 
 				id = 1;}
+			
+			
 
-	    	Customer ce = new Customer(id,name,email,contact,gender,credit,notes);
+	    	Customer ce = new Customer(id,name,email,contact,gender,credit,count);
 			cl.addCustomer(ce);
 			ObjectHelper.writeToFile(cl);
-	    	
 	    	}
-		
+	    
 		public void getCreditStatus(ActionEvent event) {
 			if(choiceBoxCreditHistory.getValue().equals("Checked")) {
 				credit=true;

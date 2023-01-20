@@ -2,15 +2,15 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="597.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PropertiesController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="744.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PropertiesController">
    <children>
       <HBox layoutY="54.0" prefHeight="22.0" prefWidth="600.0">
          <children>
@@ -18,45 +18,45 @@
                <HBox.margin>
                   <Insets left="25.0" />
                </HBox.margin></Label>
-            <RadioButton fx:id="rbPrice" mnemonicParsing="false" text="Price">
-               <HBox.margin>
-                  <Insets left="25.0" />
-               </HBox.margin></RadioButton>
-            <RadioButton fx:id="rbDate" mnemonicParsing="false" text="Listing Date">
-               <HBox.margin>
-                  <Insets left="25.0" />
-               </HBox.margin></RadioButton>
-            <RadioButton fx:id="rbBed" mnemonicParsing="false" text="Bed rom count">
-               <HBox.margin>
-                  <Insets left="25.0" />
-               </HBox.margin></RadioButton>
          </children>
       </HBox>
-      <HBox layoutY="80.0" prefHeight="22.0" prefWidth="600.0">
+      <HBox layoutY="80.0" prefHeight="67.0" prefWidth="744.0">
          <children>
-            <TextField>
-               <HBox.margin>
-                  <Insets left="25.0" />
-               </HBox.margin></TextField>
-            <Button fx:id="btnSearch" mnemonicParsing="false" text="Search">
+            <Label text="Price" />
+            <VBox prefHeight="69.0" prefWidth="100.0">
+               <children>
+                  <TextField fx:id="txtMinPriceHint" prefHeight="26.0" prefWidth="63.0" />
+                  <TextField fx:id="txtMaxPriceHint" prefHeight="26.0" prefWidth="63.0" />
+               </children>
+            </VBox>
+            <Label text="Listed Date" />
+            <VBox prefHeight="67.0" prefWidth="141.0">
+               <children>
+                  <DatePicker fx:id="dpListedHint" prefHeight="26.0" prefWidth="134.0" />
+               </children>
+            </VBox>
+            <Label text="Bed room count" />
+            <TextField fx:id="txtBedHint" prefHeight="26.0" prefWidth="63.0" />
+            <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#filterSearchListener" text="Search">
                <HBox.margin>
                   <Insets left="25.0" />
                </HBox.margin></Button>
          </children>
       </HBox>
-      <ScrollPane layoutY="124.0" prefHeight="417.0" prefWidth="600.0">
+      <ScrollPane layoutY="151.0" prefHeight="443.0" prefWidth="744.0">
          <content>
-            <VBox fx:id="vbProperties" prefHeight="402.0" prefWidth="586.0" />
+            <VBox fx:id="vbProperties" prefHeight="373.0" prefWidth="664.0" />
          </content>
       </ScrollPane>
       <Label layoutX="235.0" layoutY="14.0" text="All Properties" />
-      <HBox alignment="CENTER" layoutY="544.0" prefHeight="45.0" prefWidth="600.0">
+      <HBox alignment="CENTER" layoutY="594.0" prefHeight="38.0" prefWidth="600.0">
          <children>
             <Button fx:id="btnBack" alignment="BOTTOM_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#backListener" prefHeight="26.0" prefWidth="58.0" text="Back">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </Button>
+            <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#reloadListener" text="Refresh" />
          </children>
       </HBox>
    </children>

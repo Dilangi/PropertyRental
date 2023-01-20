@@ -1,8 +1,8 @@
 package list;
 
 import java.io.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import model.PointOfInterest;
@@ -40,12 +40,18 @@ public class CsvReader {
 	   PropertyList pl = new PropertyList();
 		
 	   readNextLine(); //reading heading line
+	   int i =0;
 	   while (readNextLine()){
+		   i+=1;
 		   String line = getLine();
 		   String[] lineRead = line.split(",");
 			
-		   if(fileName.equals("House_Rent_Dataset.csv")) { //data set to PropertyDetail object
-				Date listed = new SimpleDateFormat("dd/MM/yyyy").parse(lineRead[0]);
+		   if(fileName.equals("House_Rent_Dataset.csv")) {
+			   //data set to PropertyDetail object
+			   
+			   DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				LocalDate listed = LocalDate.parse(lineRead[0], formatter);
+				
 				int bedrooms = Integer.parseInt(lineRead[1]);
 				int bathrooms = Integer.parseInt(lineRead[2]);
 				double rent = Double.parseDouble(lineRead[3]); 
@@ -57,7 +63,7 @@ public class CsvReader {
 				String type = lineRead[9]; 
 				String garden = lineRead[10];
 				
-				PropertyDetail pe = new PropertyDetail(listed, bedrooms, bathrooms, rent, size, postcode,lat,lon, furnishing, type, garden);
+				PropertyDetail pe = new PropertyDetail(i,listed, bedrooms, bathrooms, rent, size, postcode,lat,lon, furnishing, type, garden);
 				pl.addProperty(pe);
 				
 			}
@@ -65,8 +71,9 @@ public class CsvReader {
 			else if(fileName.equals("PlacesOfInterestDataSet.csv")) { // data set to PointOfInterest object
 				String place = lineRead[0]; 
 				String postcode = lineRead[1]; 
-				String latlong = lineRead[2];
-				PointOfInterest poie = new PointOfInterest(place, postcode, latlong);
+				String lat = lineRead[2].replace("\"", "");
+				String lon = lineRead[3].replace("\"", "");
+				PointOfInterest poie = new PointOfInterest(place, postcode, lat, lon);
 				poil.addPoi(poie);
 				
 			}

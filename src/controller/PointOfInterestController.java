@@ -1,19 +1,25 @@
 package controller;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import list.CustomerList;
 import list.ObjectHelper;
+import list.POIList;
 import list.SceneSwitcher;
+import model.Customer;
 import model.PointOfInterest;
 
-public class PointOfInterestController {
+public class PointOfInterestController  implements Initializable{
+
 
     @FXML
     private Button btnAddPoI;
@@ -22,22 +28,41 @@ public class PointOfInterestController {
     private Button btnBack;
 
     @FXML
+    private Button btnSearch;
+
+    @FXML
+    private Label lblTitle;
+
+    @FXML
     private TextField tfLatLong;
 
     @FXML
     private TextField tfPlace;
-
+    
     @FXML
     private TextField tfPostalCode;
 
     @FXML
-    void addPoIListener(ActionEvent event) {
+    private TextField tfSearch;
+
+	private boolean isShow;
+
+    @FXML
+    void getPOI(ActionEvent event) throws ClassNotFoundException, IOException {
+    	String postalCode = tfSearch.getText();
+    	searchPOI(postalCode);
+    }
+
+	@FXML
+    void addPoIListener(ActionEvent event) throws ClassNotFoundException, IOException {
     	String name = tfPlace.getText();
     	String postalCode = tfPostalCode.getText();
     	String latLong = tfLatLong.getText();
+    	String lat = latLong.split(",")[0];
+    	String lon = latLong.split(",")[1];
     	
 
-    	PointOfInterest ce = new PointOfInterest(name,postalCode,latLong);
+    	/*PointOfInterest ce = new PointOfInterest(name,postalCode,latLong);
     	File file = new File(ObjectHelper.getPoiListFileName());	
     	
     	try {
@@ -47,7 +72,18 @@ public class PointOfInterestController {
 	        out.close();
 	        fileOut.close();
 		 } catch(IOException e){
-			 System.out.println("OOps...there was a problem"+ e);}
+			 System.out.println("OOps...there was a problem"+ e);}*/
+    	
+    	PointOfInterest poie = new PointOfInterest(name,postalCode,lat, lon);
+    	File file = new File(ObjectHelper.getPoiListFileName());	
+    	POIList poil = new POIList();
+    
+  
+	if(file.exists()){
+		poil=ObjectHelper.readPOIList();
+	}
+	poil.addPoi(poie);
+	ObjectHelper.writeToFile(poil);
     	}
 
     @FXML
@@ -60,4 +96,38 @@ public class PointOfInterestController {
 		}
     }
 
-}
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		tfSearch.setVisible(isShow);
+		btnSearch.setVisible(isShow);
+		if(isShow) {
+			lblTitle.setText("Update Point of Interest");
+			btnAddPoI.setText("Update POI");}
+	}
+
+	public void setComponent(boolean isShow) {
+		this.isShow = isShow;	
+	}
+	
+    private void searchPOI(String postalCode) throws ClassNotFoundException, IOException {
+		POIList poil = new POIList();
+		File filePoiList = new File(ObjectHelper.getPoiListFileName());
+		if(filePoiList.exists()){
+			poil = ObjectHelper.readPOIList();
+			for(PointOfInterest poi : poil.getPOIs()) {
+				if(poi.getPostcode().equals(poi.getPostcode())) {
+					tfPlace.setText(poi.getPlace());
+					String latLong = poi.getLat()+","+poi.getLon();
+					tfLatLong.setText(latLong);
+					tfPostalCode.setText(poi.getPostcode());}
+				else {//pop up msg
+					}
+				}
+			}else {
+				//pop up msg
+			}
+		}
+		
+	}
+
+

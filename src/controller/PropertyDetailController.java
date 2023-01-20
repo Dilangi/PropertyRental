@@ -2,9 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.text.Format;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -65,8 +63,10 @@ public class PropertyDetailController  implements Initializable{
 		Property property = Property.getInstance();
 		PropertyDetail pe = property.getPropertyDetail();
 
-		Format formatter = new SimpleDateFormat("dd/MM/yyyy");
-		String date = formatter.format(pe.getListed());
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String date = pe.getListed().format(formatter);
+		
+		
 		String bedrooms = Integer.toString(pe.getBedrooms());
 		String bathrooms = Integer.toString(pe.getBathrooms());
 		String rent = Double.toString(pe.getRent()); 
