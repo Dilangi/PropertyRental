@@ -8,86 +8,215 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddPropertyController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="509.0" prefWidth="666.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddPropertyController">
    <children>
-      <HBox layoutX="6.0" layoutY="49.0" prefHeight="302.0" prefWidth="592.0">
+      <HBox layoutX="3.0" layoutY="128.0" prefHeight="280.0" prefWidth="658.0">
          <children>
             <VBox prefHeight="302.0" prefWidth="125.0">
                <children>
-                  <Label text="Listed" />
-                  <Label text="Type" />
-                  <Label text="Bedrooms" />
-                  <Label text="Bathrooms" />
-                  <Label text="Rent PCM" />
-                  <Label text="Furnishing" />
-                  <Label text="Size" />
-                  <Label text="Garden" />
-               </children></VBox>
-            <VBox prefHeight="314.0" prefWidth="155.0">
+                  <Label prefHeight="20.0" prefWidth="128.0" text="Listed">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></Label>
+                  <Label prefHeight="20.0" prefWidth="127.0" text="Type">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin></Label>
+                  <Label prefHeight="20.0" prefWidth="125.0" text="Bedrooms">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin></Label>
+                  <Label prefHeight="20.0" prefWidth="132.0" text="Bathrooms">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin></Label>
+                  <Label prefHeight="20.0" prefWidth="129.0" text="Rent PCM">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin></Label>
+                  <Label prefHeight="20.0" prefWidth="125.0" text="Furnishing">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin></Label>
+               </children>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin></VBox>
+            <VBox prefHeight="332.0" prefWidth="152.0">
                <children>
-                  <DatePicker fx:id="dpListedDate" onAction="#getListedDate" promptText="listed date" />
-                  <TextField fx:id="tfType">
+                  <DatePicker fx:id="dpListedDate" onAction="#getListedDate" prefHeight="30.0" prefWidth="152.0" promptText="listed date" />
+                  <TextField fx:id="tfType" prefHeight="33.0" prefWidth="152.0">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </TextField>
-                  <TextField fx:id="tfBedCount">
+                  <TextField fx:id="tfBedCount" prefHeight="34.0" prefWidth="152.0">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </TextField>
-                  <TextField fx:id="tfBathCount">
+                  <TextField fx:id="tfBathCount" prefHeight="33.0" prefWidth="152.0">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </TextField>
-                  <TextField fx:id="tfRent">
+                  <TextField fx:id="tfRent" prefHeight="35.0" prefWidth="152.0">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </TextField>
-                  <TextField fx:id="tfFurnished">
+                  <TextField fx:id="tfFurnished" prefHeight="38.0" prefWidth="152.0">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
-                  </TextField>
-                  <TextField fx:id="tfFloorSize">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <TextField fx:id="tfGarden">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </TextField>
                </children>
             </VBox>
-            <VBox prefHeight="302.0" prefWidth="127.0">
+            <VBox prefHeight="260.0" prefWidth="126.0">
                <children>
-                  <Label text="Postcode" />
-                  <Label text="Latitude" />
-                  <Label text=" Longitude" />
-               </children></VBox>
+                  <Label prefHeight="20.0" prefWidth="129.0" text="Postcode">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Label>
+                  <Label prefHeight="20.0" prefWidth="132.0" text="Latitude">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin></Label>
+                  <Label prefHeight="20.0" prefWidth="132.0" text=" Longitude">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin></Label>
+                  <Label prefHeight="20.0" prefWidth="127.0" text="Size">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin></Label>
+                  <Label prefHeight="20.0" prefWidth="133.0" text="Garden">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin></Label>
+               </children>
+               <HBox.margin>
+                  <Insets left="30.0" top="20.0" />
+               </HBox.margin></VBox>
             <VBox prefHeight="302.0" prefWidth="175.0">
                <children>
-                  <TextField fx:id="tfPostal" prefHeight="28.0" prefWidth="87.0" />
-                  <TextField fx:id="tfLat">
+                  <TextField fx:id="tfPostal" prefHeight="35.0" prefWidth="175.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font></TextField>
+                  <TextField fx:id="tfLat" prefHeight="31.0" prefWidth="175.0">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </TextField>
-                  <TextField fx:id="tfLon">
+                  <TextField fx:id="tfLon" prefHeight="33.0" prefWidth="175.0">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="tfFloorSize" prefHeight="34.0" prefWidth="175.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="tfGarden" prefHeight="33.0" prefWidth="175.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </TextField>
                </children>
+               <HBox.margin>
+                  <Insets top="30.0" />
+               </HBox.margin>
             </VBox>
          </children>
       </HBox>
-      <Button fx:id="btnAddProperty" alignment="CENTER" contentDisplay="CENTER" layoutX="255.0" layoutY="361.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#setPropertyListener" prefHeight="26.0" prefWidth="90.0" text="Add Property" />
-      <Button fx:id="btnBack" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="141.0" layoutY="361.0" mnemonicParsing="false" onAction="#backListener" prefHeight="26.0" prefWidth="58.0" text="Back" />
+      <HBox layoutX="2.0" layoutY="456.0" prefHeight="43.0" prefWidth="658.0">
+         <children>
+            <Button fx:id="btnBack" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#backListener" prefHeight="40.0" prefWidth="197.0" style="-fx-background-color: #777777;" text="Back">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="100.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btnAddProperty" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#setPropertyListener" prefHeight="40.0" prefWidth="185.0" style="-fx-background-color: #03961c;" text="Add Property">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="100.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <Label layoutX="259.0" layoutY="51.0" prefHeight="20.0" prefWidth="128.0" text="Add Property">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

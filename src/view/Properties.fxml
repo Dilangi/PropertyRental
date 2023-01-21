@@ -9,54 +9,124 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="744.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PropertiesController">
    <children>
-      <HBox layoutY="54.0" prefHeight="22.0" prefWidth="600.0">
+      <HBox layoutY="89.0" prefHeight="22.0" prefWidth="600.0">
          <children>
             <Label text="Filter option: ">
                <HBox.margin>
                   <Insets left="25.0" />
-               </HBox.margin></Label>
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
          </children>
       </HBox>
-      <HBox layoutY="80.0" prefHeight="67.0" prefWidth="744.0">
+      <HBox layoutX="16.0" layoutY="130.0" prefHeight="67.0" prefWidth="709.0">
          <children>
-            <Label text="Price" />
-            <VBox prefHeight="69.0" prefWidth="100.0">
+            <VBox prefHeight="67.0" prefWidth="105.0">
+               <children>
+                  <Label text="Minimum Price">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Maximum Price">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="67.0" prefWidth="130.0">
                <children>
                   <TextField fx:id="txtMinPriceHint" prefHeight="26.0" prefWidth="63.0" />
-                  <TextField fx:id="txtMaxPriceHint" prefHeight="26.0" prefWidth="63.0" />
+                  <TextField fx:id="txtMaxPriceHint" prefHeight="26.0" prefWidth="63.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></TextField>
                </children>
             </VBox>
-            <Label text="Listed Date" />
-            <VBox prefHeight="67.0" prefWidth="141.0">
+            <VBox prefHeight="67.0" prefWidth="161.0">
                <children>
-                  <DatePicker fx:id="dpListedHint" prefHeight="26.0" prefWidth="134.0" />
+                  <VBox prefHeight="67.0" prefWidth="132.0">
+                     <children>
+                        <Label text="Listed Date">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Bed room count">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="40.0" />
+                     </VBox.margin>
+                  </VBox>
                </children>
             </VBox>
-            <Label text="Bed room count" />
-            <TextField fx:id="txtBedHint" prefHeight="26.0" prefWidth="63.0" />
-            <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#filterSearchListener" text="Search">
+            <VBox prefHeight="67.0" prefWidth="130.0">
+               <children>
+                  <DatePicker fx:id="dpListedHint" prefHeight="26.0" prefWidth="157.0" />
+                  <TextField fx:id="txtBedHint" prefHeight="26.0" prefWidth="63.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+            <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#filterSearchListener" prefHeight="22.0" prefWidth="90.0" text="Search">
                <HBox.margin>
-                  <Insets left="25.0" />
-               </HBox.margin></Button>
+                  <Insets left="50.0" top="15.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
          </children>
       </HBox>
-      <ScrollPane layoutY="151.0" prefHeight="443.0" prefWidth="744.0">
+      <ScrollPane layoutY="199.0" prefHeight="370.0" prefWidth="744.0">
          <content>
-            <VBox fx:id="vbProperties" prefHeight="373.0" prefWidth="664.0" />
+            <VBox fx:id="vbProperties" prefHeight="394.0" prefWidth="730.0" />
          </content>
       </ScrollPane>
-      <Label layoutX="235.0" layoutY="14.0" text="All Properties" />
-      <HBox alignment="CENTER" layoutY="594.0" prefHeight="38.0" prefWidth="600.0">
+      <Label layoutX="314.0" layoutY="40.0" text="All Properties">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <HBox alignment="CENTER" layoutY="583.0" prefHeight="38.0" prefWidth="744.0">
          <children>
-            <Button fx:id="btnBack" alignment="BOTTOM_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#backListener" prefHeight="26.0" prefWidth="58.0" text="Back">
+            <Button fx:id="btnBack" alignment="BOTTOM_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#backListener" prefHeight="40.0" prefWidth="131.0" style="-fx-background-color: #777777;" text="Back">
                <HBox.margin>
-                  <Insets />
+                  <Insets right="100.0" />
                </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
             </Button>
-            <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#reloadListener" text="Refresh" />
+            <Button fx:id="btnRefresh" contentDisplay="CENTER" mnemonicParsing="false" onAction="#reloadListener" prefHeight="40.0" prefWidth="143.0" style="-fx-background-color: #f5cb42;" text="Refresh">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="100.0" />
+               </HBox.margin></Button>
          </children>
       </HBox>
    </children>

@@ -27,7 +27,13 @@ public class InvoiceController  implements Initializable{
 	private String address;
 	private boolean hasRented;
     
-	  @FXML
+	@FXML
+    private Label lblBalance;
+  
+	@FXML
+    private Label lblSettlment;
+	
+	@FXML
 	    private Button btnBack;
 
 	    @FXML
@@ -145,12 +151,18 @@ public class InvoiceController  implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		System.out.println("hiii"+hasRented);
 	//set deduction fields visibility
 		lblTitle.setVisible(!hasRented);
 		lblDeduction.setVisible(!hasRented);
+		lblSettlment.setVisible(!hasRented);
+		lblBalance.setVisible(!hasRented);
+		
 		if(!hasRented) {
+			Double balance = agreement.getDeposit() - agreement.getDeduction();
+			if(balance>0) {lblSettlment.setText("Refund Amount");}
+			else {lblSettlment.setText("Due Amount");}
 			lblDeduction.setText(Double.toString(agreement.getDeduction()));
+			lblBalance.setText(Double.toString(Math.abs(balance)));
 		}
 		
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -158,6 +170,8 @@ public class InvoiceController  implements Initializable{
 		String sDate = agreement.getLetDate().format(dateTimeFormatter);
 		
 		double total = agreement.getAgentFee()+agreement.getDeposit();
+		
+		
 		
 		address = agreement.getPropertyDetail().getPostcode();
 		

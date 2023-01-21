@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox layoutX="7.0" layoutY="188.0" prefHeight="154.0" prefWidth="634.0" AnchorPane.topAnchor="188.0">
+      <HBox layoutX="7.0" layoutY="154.0" prefHeight="180.0" prefWidth="703.0" AnchorPane.topAnchor="154.0">
          <children>
             <VBox prefHeight="302.0" prefWidth="125.0">
                <children>
@@ -18,116 +18,215 @@
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
                   </Label>
                   <Label text="Rent">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
                   </Label>
                   <Label text="Location">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
                   </Label>
                   <Label text="Beds">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
                   </Label>
                   <Label text="Bath">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
                   </Label>
                   <Label text="Furnished Status">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
                   </Label>
                   <Label text="Garden">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
                   </Label>
                   <Label text="Floor Size">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
                   </Label>
                </children>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
             </VBox>
             <VBox prefHeight="314.0" prefWidth="155.0">
                <children>
-                  <Label fx:id="lblType" text="Type" />
-                  <Label fx:id="lblRent" text="Rent" />
-                  <Label fx:id="lblPostal" text="Location" />
-                  <Label fx:id="lblBedCount" text="Bed" />
-                  <Label fx:id="lblBathCount" text="Bath" />
-                  <Label fx:id="lblFurnished" text="Label" />
-                  <Label fx:id="lblGarden" text="Garden" />
-                  <Label fx:id="lblFloorSize" text="FloorSize" />
+                  <Label fx:id="lblType" text="Type">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding></Label>
+                  <Label fx:id="lblRent" text="Rent">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding></Label>
+                  <Label fx:id="lblPostal" text="Location">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding></Label>
+                  <Label fx:id="lblBedCount" text="Bed">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding></Label>
+                  <Label fx:id="lblBathCount" text="Bath">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding></Label>
+                  <Label fx:id="lblFurnished" text="Label">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding></Label>
+                  <Label fx:id="lblGarden" text="Garden">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding></Label>
+                  <Label fx:id="lblFloorSize" text="FloorSize">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding></Label>
                </children>
             </VBox>
-            <VBox prefHeight="302.0" prefWidth="127.0">
+            <VBox prefHeight="180.0" prefWidth="145.0">
                <children>
                   <Label text="Customer Id">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
                   </Label>
                   <Label text="Name">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
                   </Label>
                   <Label text="Contact ">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
                   </Label>
                   <Label text="Credit History Checked">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
                   </Label>
                   <Label text="Residents count">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
                   </Label>
                </children>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
             </VBox>
             <VBox prefHeight="154.0" prefWidth="199.0">
                <children>
                   <HBox prefHeight="26.0" prefWidth="175.0">
                      <children>
-                        <Label fx:id="lblCustId" text="Id" />
+                        <Label fx:id="lblCustId" text="Id">
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding></Label>
                      </children>
                   </HBox>
-                  <Label fx:id="lblCustName" text="name" />
-                  <Label fx:id="lblContact" text="contact" />
-                  <Label fx:id="lblCredit" text="check history" />
-                  <Label fx:id="lblHouseHolders" text="count" />
+                  <Label fx:id="lblCustName" text="name">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding></Label>
+                  <Label fx:id="lblContact" text="contact">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding></Label>
+                  <Label fx:id="lblCredit" text="check history">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding></Label>
+                  <Label fx:id="lblHouseHolders" text="count">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding></Label>
                </children>
             </VBox>
          </children>
       </HBox>
-      <HBox layoutX="7.0" layoutY="155.0" prefHeight="26.0" prefWidth="592.0">
+      <HBox layoutX="7.0" layoutY="116.0" prefHeight="26.0" prefWidth="592.0">
          <children>
-            <Label text="Property Details" />
+            <Label text="Property Details">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font></Label>
             <Label text="Customer Details">
                <HBox.margin>
-                  <Insets left="250.0" />
+                  <Insets left="200.0" />
                </HBox.margin>
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
             </Label>
          </children>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
       </HBox>
-      <HBox layoutX="7.0" layoutY="355.0" prefHeight="26.0" prefWidth="592.0">
+      <HBox layoutX="8.0" layoutY="357.0" prefHeight="26.0" prefWidth="592.0">
          <children>
-            <Label text="Agreement" />
+            <Label text="Agreement">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font></Label>
          </children>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
       </HBox>
-      <HBox layoutX="7.0" layoutY="381.0" prefHeight="94.0" prefWidth="634.0">
+      <HBox layoutX="146.0" layoutY="372.0" prefHeight="122.0" prefWidth="476.0">
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
@@ -135,58 +234,143 @@
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
                   </Label>
                   <Label text="Let end date">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
-                  </Label>
-                  <Label text="Deposit">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label text="Agent fee">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label text="Total paid">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lblTitle" text="Deduction">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
                   </Label>
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label fx:id="lblStart" text="rent" />
-                  <Label fx:id="lblTerminate" text="end" />
-                  <Label fx:id="lblDeposit" text="deposit" />
-                  <Label fx:id="lblAgentFee" text="agentFee" />
-                  <Label fx:id="lblTotal" text="total" />
-                  <Label fx:id="lblDeduction" text="rent" />
+                  <Label fx:id="lblStart" text="rent">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="lblTerminate" text="end">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></Label>
                </children>
             </VBox>
-            <Label text="Terms and Conditions" />
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Deposit">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Agent fee">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Total paid">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="lblTitle1" text="Deduction">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="lblSettlment1" text="Settlment">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="lblDeposit" text="deposit">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="lblAgentFee" text="agentFee">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="lblTotal" text="total">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="lblDeduction" text="rent">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="lblBalance" text="balance">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
          </children>
       </HBox>
-      <HBox layoutX="28.0" layoutY="498.0" prefHeight="26.0" prefWidth="592.0">
+      <HBox layoutX="-1.0" layoutY="514.0" prefHeight="43.0" prefWidth="713.0">
          <children>
-            <Button fx:id="btnBack" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#backListener" prefHeight="26.0" prefWidth="90.0" text="Back" />
-            <Button fx:id="btnConfirm" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#confirmListener" prefHeight="26.0" prefWidth="90.0" text="Confirm" />
+            <Button fx:id="btnBack" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#backListener" prefHeight="40.0" prefWidth="197.0" style="-fx-background-color: #777777;" text="Back">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="80.0" />
+               </HBox.margin></Button>
+            <Button fx:id="btnConfirm" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#confirmListener" prefHeight="40.0" prefWidth="185.0" style="-fx-background-color: #03961c;" text="Confirm">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="100.0" />
+               </HBox.margin></Button>
          </children>
       </HBox>
-      <HBox layoutX="7.0" layoutY="110.0" prefHeight="26.0" prefWidth="592.0">
+      <HBox layoutX="468.0" layoutY="74.0" prefHeight="26.0" prefWidth="186.0">
          <children>
-            <Label text="Agreement ID" />
-            <Label fx:id="lblId" text="id" />
+            <Label text="Agreement ID">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font></Label>
+            <Label fx:id="lblId" text="id">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin></Label>
          </children>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
       </HBox>
+      <Label layoutX="287.0" layoutY="34.0" prefHeight="40.0" prefWidth="70.0" text="Invoice">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

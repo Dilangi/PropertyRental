@@ -23,7 +23,10 @@ import model.Customer;
 public class CloseTenancyController {
 	private Agreement agreement;
 
-	 @FXML
+	@FXML
+    private TextField tfBalance;
+	 
+	@FXML
 	    private Button btnBack;
 
 	    @FXML
@@ -159,6 +162,8 @@ public class CloseTenancyController {
 					DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 					String eDate = agreement.getLetDate().format(dateTimeFormatter);
 					String sDate = agreement.getLetDate().format(dateTimeFormatter);
+					
+					
 					
 					lblId.setText(Integer.toString(agreement.getAgreementId()));
 					
