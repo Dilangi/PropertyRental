@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import list.ErrorHandler;
 import list.FormatHelper;
 import list.ObjectHelper;
 import list.POIList;
@@ -110,8 +111,15 @@ public class DistanceController implements Initializable{
     void calculateListener(ActionEvent event) {
 		Double latProp = Double.parseDouble(lat);
 		Double lonProp = Double.parseDouble(lon);
-		Double latPoi = Double.parseDouble(latX);
-		Double lonPoi = Double.parseDouble(lonX);
+		Double latPoi=0.0, lonPoi=0.0;
+		if(latX!=null)
+			latPoi = Double.parseDouble(latX);
+		else
+			ErrorHandler.errorMsg("", "Select Place");
+		if(latX!=null)
+			lonPoi = Double.parseDouble(lonX);
+		else
+			ErrorHandler.errorMsg("", "Select Place");
 		if ((latProp == latPoi) && (lonProp == lonPoi)) {
 			lblDistance.setText("0");
 		}
@@ -125,7 +133,8 @@ public class DistanceController implements Initializable{
 				distance = distance * 1.609344;
 			} else if (unit.equals("N")) {
 				distance = distance * 0.8684;
-			}
+			}else {
+				ErrorHandler.errorMsg("", "Select the Unit");}
 			lblDistance.setText(FormatHelper.twoDecimalString(distance));
 		}
 		}

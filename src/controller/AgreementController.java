@@ -22,6 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import list.AgreementList;
 import list.CustomerList;
+import list.ErrorHandler;
 import list.ObjectHelper;
 import list.SceneSwitcher;
 import model.Agreement;
@@ -117,8 +118,11 @@ import model.PropertyDetail;
 
 	    @FXML
 	    void gerCustomerDetail(ActionEvent event) throws NumberFormatException, ClassNotFoundException, IOException {
-	    	String id = tfCustomerId.getText();
-	    	getCustomer(Integer.parseInt(id), event);
+	    	if(tfCustomerId.getText().isEmpty()) {
+	    		ErrorHandler.errorMsg("Warning", "Please enter customer id");
+	    	}else {
+		    	String id = tfCustomerId.getText();
+		    	getCustomer(Integer.parseInt(id), event);}
 	    }
 
 	    @FXML
@@ -135,39 +139,45 @@ import model.PropertyDetail;
 	    	 agentFee = Double.parseDouble(tfAgentFee.getText());
 	    	 agreement.setAgentFee(agentFee);
 	    	 agreement.setDeposit(deposit);
-	    	
-	    	AgreementList al = new AgreementList();
-	 		File fileAgreementList = new File(ObjectHelper.getAgreementListFileName());
-	 		int id;
-	 		if(fileAgreementList.exists()){
-	 			al= ObjectHelper.readAgreementList();
-	 			id = al.getSize()+1;
-	 		}else {id = 1;}
-	 		agreement.setAgreementId(id);
-	 		al.addAgreement(agreement);
-	 		ObjectHelper.writeToFile(al);
 	    	 
-	    	Node node = (Node) event.getSource();
-	    	Stage stage = (Stage) node.getScene().getWindow();
-	    	stage.close();
-	    	
-	    	try {
-	    		FXMLLoader loader  = new FXMLLoader();
-	    		loader.setLocation(getClass().getResource("/view/Invoice.fxml"));
-	    		//loader.load();
-	    		
-	    		InvoiceController controller = new InvoiceController();
-	    	    controller.setAgreement(agreement, true);
-	    	    loader.setController(controller);
-	    	    Parent root = loader.load();
-	    	    Scene scene = new Scene(root);
-	    	    stage.setScene(scene);
-	    	    stage.show();
-	    	  } catch (IOException e) {
-	    	    System.err.println(String.format("Error: %s", e.getMessage()));
-	    	  }
-	    	
-	    	
+	    	 if(agreement.getEndDate()==null) {dpEndDate.setStyle("-fx-border-color: red;-fx-border-width: 2px;");}
+	    	 else if(agreement.getLetDate()==null){dpEndDate.setStyle("-fx-border-color: red;-fx-border-width: 2px;");}
+	    	 else {//if date fields acceptable
+	    		if(agreement.getEndDate().isBefore(agreement.getLetDate())) {
+	    			ErrorHandler.errorMsg("Error", "Let date and End date mismatch");}
+	    		else {
+			    	AgreementList al = new AgreementList();
+			 		File fileAgreementList = new File(ObjectHelper.getAgreementListFileName());
+			 		int id;
+			 		if(fileAgreementList.exists()){
+			 			al= ObjectHelper.readAgreementList();
+			 			id = al.getSize()+1;
+			 		}else {id = 1;}
+			 		agreement.setAgreementId(id);
+			 		al.addAgreement(agreement);
+			 		ObjectHelper.writeToFile(al);
+			    	 
+			    	Node node = (Node) event.getSource();
+			    	Stage stage = (Stage) node.getScene().getWindow();
+			    	stage.close();
+			    	
+			    	try {
+			    		FXMLLoader loader  = new FXMLLoader();
+			    		loader.setLocation(getClass().getResource("/view/Invoice.fxml"));
+			    		//loader.load();
+			    		
+			    		InvoiceController controller = new InvoiceController();
+			    	    controller.setAgreement(agreement, true);
+			    	    loader.setController(controller);
+			    	    Parent root = loader.load();
+			    	    Scene scene = new Scene(root);
+			    	    stage.setScene(scene);
+			    	    stage.show();
+			    	  } catch (IOException e) {
+			    	    System.err.println(String.format("Error: %s", e.getMessage()));
+			    	  }}
+	    	 }
+	  
 	    }
 
 		@FXML
@@ -237,13 +247,11 @@ import model.PropertyDetail;
 					}else {
 						SceneSwitcher sceneSwitcher = new SceneSwitcher();
 			    		sceneSwitcher.switchView(event, "/view/AddCustomer.fxml");
-						//todo when close set customer details here
 					}
 				}
 			}else { 
 				SceneSwitcher sceneSwitcher = new SceneSwitcher();
 	    		sceneSwitcher.switchView(event, "/view/AddCustomer.fxml");
-				//todo when close set customer details here
 			}
 		}
 

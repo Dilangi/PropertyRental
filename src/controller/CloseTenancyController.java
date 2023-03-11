@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import list.AgreementList;
+import list.ErrorHandler;
 import list.ObjectHelper;
 import list.SceneSwitcher;
 import model.Agreement;
@@ -109,11 +110,9 @@ public class CloseTenancyController {
 
     @FXML
     void endTenancyListener(ActionEvent event) throws IOException {
-    	 agreement.setDeduction(Double.parseDouble(tfDeduction.getText()));
-			/*
-			 * SceneSwitcher sceneSwitcher = new SceneSwitcher();
-			 * sceneSwitcher.passObject(event, agreement, false);
-			 */
+    	if(!tfDeduction.getText().isEmpty()) {
+    		agreement.setDeduction(Double.parseDouble(tfDeduction.getText()));}
+			
     	 Node node = (Node) event.getSource();
 	    	Stage stage = (Stage) node.getScene().getWindow();
 	    	stage.close();
@@ -121,7 +120,6 @@ public class CloseTenancyController {
 	    	try {
 	    		FXMLLoader loader  = new FXMLLoader();
 	    		loader.setLocation(getClass().getResource("/view/Invoice.fxml"));
-	    		//loader.load();
 	    		
 	    		InvoiceController controller = new InvoiceController();
 	    	    controller.setAgreement(agreement, false);
@@ -138,8 +136,11 @@ public class CloseTenancyController {
 
     @FXML
     void getInvoiceListener(ActionEvent event) throws NumberFormatException, ClassNotFoundException, IOException {
+    	if(tfInvoiceId.getText().isEmpty()) {
+    		ErrorHandler.errorMsg("Warning", "Please enter agreement id");
+    	}else {
     	String id = tfInvoiceId.getText();
-    	getAgreement(Integer.parseInt(id), event);
+    	getAgreement(Integer.parseInt(id), event);}
     }
 
 	private void getAgreement(int id, ActionEvent event) throws ClassNotFoundException, IOException {

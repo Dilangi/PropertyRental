@@ -4,9 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Agreement  implements Serializable{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 9856L;
 	private Customer customer;
 	private PropertyDetail propertyDetail;

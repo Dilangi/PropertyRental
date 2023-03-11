@@ -3,6 +3,7 @@ module PropertyRental {
 	requires javafx.fxml;
 	requires javafx.graphics;
 	requires javafx.base;
+	requires org.junit.jupiter.api;
 	
 	opens model to javafx.graphics, javafx.fxml;
 	opens view to javafx.graphics, javafx.fxml;

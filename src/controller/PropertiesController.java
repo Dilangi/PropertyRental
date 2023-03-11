@@ -15,7 +15,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import list.ObjectHelper;
 import list.PropertyList;
 import list.SceneSwitcher;
@@ -25,7 +24,6 @@ import javafx.scene.layout.VBox;
 
 public class PropertiesController implements Initializable{
 
-	private String filter;
 	List<PropertyDetail> pdl = new ArrayList<PropertyDetail>();
 	
 	@FXML

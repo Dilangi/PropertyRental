@@ -11,11 +11,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import list.CustomerList;
+import list.ErrorHandler;
 import list.ObjectHelper;
 import list.POIList;
 import list.SceneSwitcher;
-import model.Customer;
 import model.PointOfInterest;
 
 public class PointOfInterestController  implements Initializable{
@@ -49,8 +48,10 @@ public class PointOfInterestController  implements Initializable{
 
     @FXML
     void getPOI(ActionEvent event) throws ClassNotFoundException, IOException {
-    	String postalCode = tfSearch.getText();
-    	searchPOI(postalCode);
+    	if(tfSearch.getText().isEmpty()) {ErrorHandler.errorMsg("", "Please enter search value");}
+    	else {
+	    	String postalCode = tfSearch.getText();
+	    	searchPOI(postalCode);}
     }
 
 	@FXML
@@ -61,7 +62,6 @@ public class PointOfInterestController  implements Initializable{
     	String lat = latLong.split(",")[0];
     	String lon = latLong.split(",")[1];
     	
-
     	/*PointOfInterest ce = new PointOfInterest(name,postalCode,latLong);
     	File file = new File(ObjectHelper.getPoiListFileName());	
     	
@@ -120,11 +120,9 @@ public class PointOfInterestController  implements Initializable{
 					String latLong = poi.getLat()+","+poi.getLon();
 					tfLatLong.setText(latLong);
 					tfPostalCode.setText(poi.getPostcode());}
-				else {//pop up msg
-					}
 				}
 			}else {
-				//pop up msg
+				ErrorHandler.errorMsg("Error", "No such place recorded");
 			}
 		}
 		

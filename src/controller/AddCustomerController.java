@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +17,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import list.CustomerList;
+import list.ErrorHandler;
 import list.ObjectHelper;
 import list.SceneSwitcher;
 import model.Customer;
@@ -52,10 +55,12 @@ import model.Customer;
 	    private TextField tfName;
 
 	    @FXML
-	    private TextField tftfRentCount; 
+	    private TextField tftfRentCount;
+	    
+	    
 
 	    @FXML
-	    void getGender(ActionEvent event) {
+	    void getGender(ActionEvent event) {//get value for gender variable
 	    	if(rbMale.isSelected()) {
 	    		gender = "Male";}
 	    	else if(rbFemale.isSelected()) {
@@ -72,8 +77,29 @@ import model.Customer;
 			}
 	    }
 
-	    @FXML
+	    @FXML 
 	    void registerListener(ActionEvent event) throws ParseException, ClassNotFoundException, IOException{
+	    	fieldValidation();
+	    }
+	    
+		private void fieldValidation() throws ClassNotFoundException, IOException {
+			if(tfName.getText().isEmpty()) {
+				tfName.setStyle("-fx-border-color: red;-fx-border-width: 2px;");
+			} else if(tfContact.getText().isEmpty()) {
+				tfContact.setStyle("-fx-border-color: red;-fx-border-width: 2px;");
+			}else if(tfName.getText().isEmpty()) {
+				tfName.setStyle("-fx-border-color: red;-fx-border-width: 2px;");
+			}else if(tfEmail.getText().isEmpty()) {
+				tfEmail.setStyle("-fx-border-color: red;-fx-border-width: 2px;");
+			} 
+			else if(!validateEmail(tfEmail.getText())) {ErrorHandler.errorMsg("", "Invalid email!");}
+			else if(tftfRentCount.getText().isEmpty()) {
+				tfEmail.setStyle("-fx-border-color: red;-fx-border-width: 2px;");
+			}else {
+				tfName.setStyle(null);
+				tfContact.setStyle(null);
+				tfEmail.setStyle(null);
+				tftfRentCount.setStyle(null);
 	    	String name = tfName.getText();
 	    	String email = tfEmail.getText();
 	    	String contact = tfContact.getText();
@@ -88,12 +114,25 @@ import model.Customer;
 				id = 1;}
 			
 			
-
 	    	Customer ce = new Customer(id,name,email,contact,gender,credit,count);
 			cl.addCustomer(ce);
 			ObjectHelper.writeToFile(cl);
-	    	}
-	    
+			ErrorHandler.successMsg("Confirmation", "Customer Added Successfull!");}
+			
+		}
+
+		private boolean validateEmail(String email) {
+			String regex = "^[A-Za-z0-9+_.-]+@(.+)$";   
+	        Pattern pattern = Pattern.compile(regex);  
+	        Matcher matcher = pattern.matcher(email);  
+			return matcher.matches();
+		}
+
+		private boolean validateContact() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
 		public void getCreditStatus(ActionEvent event) {
 			if(choiceBoxCreditHistory.getValue().equals("Checked")) {
 				credit=true;

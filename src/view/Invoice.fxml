@@ -286,7 +286,7 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="lblTitle1" text="Deduction">
+                  <Label fx:id="lblTitle" text="Deduction">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -294,7 +294,7 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="lblSettlment1" text="Settlment">
+                  <Label fx:id="lblSettlment" text="Settlment">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

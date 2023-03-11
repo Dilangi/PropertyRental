@@ -3,8 +3,11 @@ package list;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Scanner;
 
+import model.Agreement;
+import model.Customer;
 import model.PointOfInterest;
 import model.PropertyDetail;
 
@@ -12,6 +15,13 @@ import model.PropertyDetail;
 public class CsvReader {
    private static Scanner inputFile;
    private static String line;
+   
+	private static String seperator = ",";
+	
+	public static final String CUSTOMER_EXPORT_FILE_NAME = "customerlist.csv";
+	public static final String PROPERTY_EXPORT_FILE_NAME  = "propertylist.csv";
+	public static final String POI_EXPORT_FILE_NAME = "poilist.csv";
+	public static final String AGREEMENT_EXPORT_FILE_NAME = "agreementist.csv";
 
    public static boolean readNextLine() throws IOException
    {
@@ -85,4 +95,49 @@ public class CsvReader {
 		
 	      close();
 		}
+   
+
+	
+	public static void writeToCSVFile(String fileName) throws ClassNotFoundException, IOException {
+		try {
+			File file = new File(fileName);
+			PrintWriter pw = new PrintWriter(file);
+			switch(fileName) {
+			case CUSTOMER_EXPORT_FILE_NAME:
+				List<Customer> listCustomer = ObjectHelper.readCustomerList(new CustomerList()).getCustomers();
+				for(Customer cust: listCustomer) {
+					pw.write(cust.getCustomerId()+seperator+cust.getName()+seperator+cust.getEmail()+seperator+cust.getContact()
+					+seperator+cust.getGender()+seperator+cust.getCreditHistory()+seperator+cust.getHouseHolder()+"\n");}
+				break;
+				
+			case PROPERTY_EXPORT_FILE_NAME:
+				List<PropertyDetail> listProperty = ObjectHelper.readPropertyList().getProperties();
+				for(PropertyDetail prop: listProperty) {
+					pw.write(prop.getpId()+seperator+prop.getListed()+seperator+prop.getBedrooms()+seperator+prop.getBathrooms()
+					+seperator+prop.getRent()+seperator+prop.getSize()+seperator+prop.getPostcode()+seperator+"\""+prop.getLat()
+					+seperator+prop.getLon()+"\""+seperator+prop.getFurnishing()+seperator+prop.getType()+seperator+prop.getGarden()+"\n");
+				}
+				break;
+				
+			case POI_EXPORT_FILE_NAME:
+				List<PointOfInterest> listPoI = ObjectHelper.readPOIList().getPOIs();
+				for(PointOfInterest poi: listPoI) {
+						pw.write(poi.getPlace()+seperator+poi.getPostcode()+seperator+"\""+poi.getLat()+seperator+poi.getLon()+"\""+"\n");
+					
+				}
+				break;
+			case AGREEMENT_EXPORT_FILE_NAME:
+				List<Agreement> listAgreement = ObjectHelper.readAgreementList().getAgreements();
+				for(Agreement agreement: listAgreement) {
+						pw.write(agreement.getCustomer().getCustomerId()+seperator+agreement.getPropertyDetail().getpId()
+								+seperator+agreement.getDeposit()+seperator+agreement.getAgentFee()+seperator+agreement.getLetDate()
+								+seperator+agreement.getEndDate()+"\n");}
+				break;
+			}
+			pw.close();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
 }

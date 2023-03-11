@@ -21,7 +21,6 @@ import model.Property;
 import model.PropertyDetail;
 
 public class InvoiceController  implements Initializable{
-	//todo set isRented true for singleton and update the  in .dat file
 	
 	private Agreement agreement;
 	private String address;
